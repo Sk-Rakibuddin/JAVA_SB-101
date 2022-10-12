@@ -1,0 +1,78 @@
+Q1) What do you mean by Multithreading? Why is it important?
+
+Ans: Generally in Java file we have a single main method which is 
+single thread application but we can create multiple thread by
+extending Thread class or implements Runnable interface, this is 
+known as multithreading in Java.
+***If we want to execute multiple code at the same time then this 
+process is needed.
+
+
+
+
+
+
+Q2) What are the benefits of using Multithreading?
+
+Ans: i>our important codes achieve independency from main method,
+ii>We can run multiple code at the same time, less time consuming,
+iii>If any exception occur in any method then it will not effect 
+other method.
+
+
+
+
+
+
+Q3) Differentiate between process and thread.
+
+Ans:
+Process-based Multitasking (Multiprocessing):
+Each process has an address in memory. In other words, each 
+process allocates a separate memory area.A process is heavyweight.
+The cost of communication between the process is high.
+Switching from one process to another requires some time for saving 
+and loading registers, memory maps,
+updating lists, etc.
+
+
+
+Thread-based Multitasking (Multithreading):
+
+Threads share the same address space.(a thread is a part of a process)
+A thread is lightweight.
+The cost of communication between the thread is low.
+
+
+
+Q4) What are the different states of a thread, or what is thread 
+lifecycle?
+
+Ans: 1.New State;
+     2.Runnable state;
+     3.Running state;
+     4.Blocked state;
+     5.Dead state;
+     
+     
+
+
+Q5) Differentiate between the Thread class and Runnable interface 
+for creating a Thread? 
+
+Ans: For creating a thread Using Thread class we need Extends Thread
+class on an other class but Using Runnable Interface we have to imple
+ments Runnable interface on that class.
+
+
+
+
+
+Q6) What if we call Java run() method directly instead start() 
+method?
+
+
+Ans: If we directly called overriden run method the main method 
+take its as normal method of that class it will execute by main 
+thread.
+    
