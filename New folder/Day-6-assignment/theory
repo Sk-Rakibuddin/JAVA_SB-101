@@ -1,0 +1,42 @@
+Q1/ What is the difference between a synchronized method and a synchronized 
+block?
+
+ANS: 1>In case of synchronized method a thread can access only either 
+either class level lock or object level lock of that class only.
+But in case of synchronized block thread can access by taking the class
+level lock or object level lock of that class or any other class's
+object level lock or class level lock.
+
+2>in case of synchronized method a method or class will be synchronized
+but in case of synchronized block a block of code will be synchronized. 
+
+
+               *****************************************
+
+Q2/- What’s the difference between class lock and object lock?
+ANS:
+**If a synchronized method is static then to access in this area we
+need class level lock, but if a synchronized method is non static 
+then to access it we need object level lock.
+
+**object level lock is unique for each object and class level lock
+is unique for each class.
+
+
+           ****************************************************
+Q4/- What is a Race condition, How will you solve the Race condition,
+explain with an Example.
+ANS:
+
+
+
+         *************************************************
+
+Q5/- What is the Difference between the sleep and join method .
+
+ANS: We can suspend a thread in three ways timely,conditionally or un
+conditionally.
+when thread is suspended timely then it is by sleep method ,
+ex:Thread.sleep(200),it will pause thread for some times.
+If we want to suspend a thread conditionally then we use Thread.join() non 
+static method, it will give the priority to the calling thread.
