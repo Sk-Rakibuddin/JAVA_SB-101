@@ -1,0 +1,411 @@
+mysql> create table deposit
+    -> (
+    -> actno varchar(25),
+    -> cname varchar(20),
+    -> bname varchar(20),
+    -> ammount int,
+    -> adate date
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc deposit;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| actno   | varchar(25) | YES  |     | NULL    |       |
+| cname   | varchar(20) | YES  |     | NULL    |       |
+| bname   | varchar(20) | YES  |     | NULL    |       |
+| ammount | int         | YES  |     | NULL    |       |
+| adate   | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table branch
+    -> (
+    -> bname varchar(20),
+    -> city varchar(20)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc branch;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| bname | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table customer
+    -> (
+    -> cname varchar(20),
+    -> city varchar(20)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc customer;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cname | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table borrow
+    -> (
+    -> loanno varchar(5),
+    -> cname varchar(20),
+    -> bname varchar(20),
+    -> ammount int
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc borrow;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| loanno  | varchar(5)  | YES  |     | NULL    |       |
+| cname   | varchar(20) | YES  |     | NULL    |       |
+| bname   | varchar(20) | YES  |     | NULL    |       |
+| ammount | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_sb101 |
++-----------------+
+| borrow          |
+| branch          |
+| customer        |
+| deposit         |
+| student         |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from deposit;
+Empty set (0.00 sec)
+
+mysql> insert into deposit values('123','rakib','simulia',500,2022-11-21);
+ERROR 1292 (22007): Incorrect date value: '1990' for column 'adate' at row 1
+mysql> insert into deposit values('123','rakib','simulia',500,2021);
+ERROR 1292 (22007): Incorrect date value: '2021' for column 'adate' at row 1
+mysql> insert into deposit values('123','rakib','simulia',500,'2021');
+ERROR 1292 (22007): Incorrect date value: '2021' for column 'adate' at row 1
+mysql> insert into deposit values('123','rakib','simulia',500,'2022-11-21');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from deposit;
++-------+-------+---------+---------+------------+
+| actno | cname | bname   | ammount | adate      |
++-------+-------+---------+---------+------------+
+| 123   | rakib | simulia |     500 | 2022-11-21 |
++-------+-------+---------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into deposit values('143','anil','vrce',1000,'2022-11-11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into deposit values('143','sunil','mgroad',2000,'2022-10-11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into deposit values('133','rahul','karolbagh',3000,'2022-11-1');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into deposit values('143','madhuri','chadni',1900,'2022-11-21');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into deposit values('143','promad','mgroad',6000,'2022-11-19');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into deposit values('143','sandip','karolbagh',1800,'2022-11-13');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from deposit;
++-------+---------+-----------+---------+------------+
+| actno | cname   | bname     | ammount | adate      |
++-------+---------+-----------+---------+------------+
+| 123   | rakib   | simulia   |     500 | 2022-11-21 |
+| 143   | anil    | vrce      |    1000 | 2022-11-11 |
+| 143   | sunil   | mgroad    |    2000 | 2022-10-11 |
+| 133   | rahul   | karolbagh |    3000 | 2022-11-01 |
+| 143   | madhuri | chadni    |    1900 | 2022-11-21 |
+| 143   | promad  | mgroad    |    6000 | 2022-11-19 |
+| 143   | sandip  | karolbagh |    1800 | 2022-11-13 |
++-------+---------+-----------+---------+------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into branch values('vrce','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into branch values('karolbagh','delhi');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into branch values('chadni','delhi');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into branch values('mgroad','bangalore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from branch;
++-----------+-----------+
+| bname     | city      |
++-----------+-----------+
+| vrce      | nagpur    |
+| karolbagh | delhi     |
+| chadni    | delhi     |
+| mgroad    | bangalore |
++-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into customer values('anil','kolkata');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('sunil','baroda');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('rahul','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('madhuri','delhi');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('promad','nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customer;
++---------+---------+
+| cname   | city    |
++---------+---------+
+| anil    | kolkata |
+| sunil   | baroda  |
+| rahul   | nagpur  |
+| madhuri | delhi   |
+| promad  | nagpur  |
++---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into borrow values('201','anil','vrce',1000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into borrow values('202','sunil','mgroad',1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrow values('201','rahul','karolbagh',2000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrow values('201','madhuri','chadni',3000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrow values('201','promad','mgroad',1200);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from borrow;
++--------+---------+-----------+---------+
+| loanno | cname   | bname     | ammount |
++--------+---------+-----------+---------+
+| 201    | anil    | vrce      |    1000 |
+| 202    | sunil   | mgroad    |    1300 |
+| 201    | rahul   | karolbagh |    2000 |
+| 201    | madhuri | chadni    |    3000 |
+| 201    | promad  | mgroad    |    1200 |
++--------+---------+-----------+---------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> select * from student where marks between 2000 and 3000;
+ERROR 1146 (42S02): Table 'sb101.student' doesn't exist
+mysql> select * from borrow where marks between 2000 and 3000;
+ERROR 1054 (42S22): Unknown column 'marks' in 'where clause'
+mysql> select * from borrow where marks in between 2000 and 3000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 2000 and 3000' at line 1
+mysql> select * from borrow where ammount between 2000 and 3000;
++--------+---------+-----------+---------+
+| loanno | cname   | bname     | ammount |
++--------+---------+-----------+---------+
+| 201    | rahul   | karolbagh |    2000 |
+| 201    | madhuri | chadni    |    3000 |
++--------+---------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select cname,actno from deposit;
++---------+-------+
+| cname   | actno |
++---------+-------+
+| rakib   | 123   |
+| anil    | 143   |
+| sunil   | 143   |
+| rahul   | 133   |
+| madhuri | 143   |
+| promad  | 143   |
+| sandip  | 143   |
++---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select cname from customer where city like 'nagpur';
++--------+
+| cname  |
++--------+
+| rahul  |
+| promad |
++--------+
+2 rows in set (0.01 sec)
+
+mysql> select cname from deposit where adate>'2022-11-19';
+
++--------+
+| cname  |
++--------+
+| rahul  |
+| promad |
++--------+
+2 rows in set (0.01 sec)
+
+mysql> select cname from deposit where adate>'2022-11-19';
++---------+
+| cname   |
++---------+
+| rakib   |
+| madhuri |
++---------+
+2 rows in set (0.01 sec)
+
+mysql> select cname,actno from deposit where adate between '2022-11-10' and '2022-11-10';
+Empty set (0.00 sec)
+
+mysql>  select cname,actno from deposit where adate between '2022-11-10' and '2022-11-22';
++---------+-------+
+| cname   | actno |
++---------+-------+
+| rakib   | 123   |
+| anil    | 143   |
+| madhuri | 143   |
+| promad  | 143   |
+| sandip  | 143   |
++---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from deposit where cname like 'c%';
+Empty set (0.00 sec)
+
+mysql> select * from deposit where cname like 's%';
++-------+--------+-----------+---------+------------+
+| actno | cname  | bname     | ammount | adate      |
++-------+--------+-----------+---------+------------+
+| 143   | sunil  | mgroad    |    2000 | 2022-10-11 |
+| 143   | sandip | karolbagh |    1800 | 2022-11-13 |
++-------+--------+-----------+---------+------------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select * from deposit where cname like '_u%';
++-------+-------+--------+---------+------------+
+| actno | cname | bname  | ammount | adate      |
++-------+-------+--------+---------+------------+
+| 143   | sunil | mgroad |    2000 | 2022-10-11 |
++-------+-------+--------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from borrow where cname like '_u';
+Empty set (0.00 sec)
+
+mysql> select * from borrow where cname like '_u%';
++--------+-------+--------+---------+
+| loanno | cname | bname  | ammount |
++--------+-------+--------+---------+
+| 202    | sunil | mgroad |    1300 |
++--------+-------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from deposit where bname like 'chadni' or 'mgroad';
++-------+---------+--------+---------+------------+
+| actno | cname   | bname  | ammount | adate      |
++-------+---------+--------+---------+------------+
+| 143   | madhuri | chadni |    1900 | 2022-11-21 |
++-------+---------+--------+---------+------------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> select * from deposit where bname like 'chadni' and 'mgroad';
+Empty set, 1 warning (0.01 sec)
+
+mysql> select * from deposit where bname='chadni' and bname='mgroad';
+Empty set (0.00 sec)
+
+mysql> select * from deposit where bname='chadni' or  bname='mgroad';
++-------+---------+--------+---------+------------+
+| actno | cname   | bname  | ammount | adate      |
++-------+---------+--------+---------+------------+
+| 143   | sunil   | mgroad |    2000 | 2022-10-11 |
+| 143   | madhuri | chadni |    1900 | 2022-11-21 |
+| 143   | promad  | mgroad |    6000 | 2022-11-19 |
++-------+---------+--------+---------+------------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from deposit where bname!='chadni' or  bname!='mgroad';
++-------+---------+-----------+---------+------------+
+| actno | cname   | bname     | ammount | adate      |
++-------+---------+-----------+---------+------------+
+| 123   | rakib   | simulia   |     500 | 2022-11-21 |
+| 143   | anil    | vrce      |    1000 | 2022-11-11 |
+| 143   | sunil   | mgroad    |    2000 | 2022-10-11 |
+| 133   | rahul   | karolbagh |    3000 | 2022-11-01 |
+| 143   | madhuri | chadni    |    1900 | 2022-11-21 |
+| 143   | promad  | mgroad    |    6000 | 2022-11-19 |
+| 143   | sandip  | karolbagh |    1800 | 2022-11-13 |
++-------+---------+-----------+---------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from deposit where bname='chadni' and  bname='mgroad';
+Empty set (0.00 sec)
+
+mysql> select * from deposit where bname!='chadni' and  bname!='mgroad';
++-------+--------+-----------+---------+------------+
+| actno | cname  | bname     | ammount | adate      |
++-------+--------+-----------+---------+------------+
+| 123   | rakib  | simulia   |     500 | 2022-11-21 |
+| 143   | anil   | vrce      |    1000 | 2022-11-11 |
+| 133   | rahul  | karolbagh |    3000 | 2022-11-01 |
+| 143   | sandip | karolbagh |    1800 | 2022-11-13 |
++-------+--------+-----------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from deposit where ammount>1000 and order by cname desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by cname desc' at line 1
+mysql>  select * from deposit where ammount>1000 order by cname desc;
++-------+---------+-----------+---------+------------+
+| actno | cname   | bname     | ammount | adate      |
++-------+---------+-----------+---------+------------+
+| 143   | sunil   | mgroad    |    2000 | 2022-10-11 |
+| 143   | sandip  | karolbagh |    1800 | 2022-11-13 |
+| 133   | rahul   | karolbagh |    3000 | 2022-11-01 |
+| 143   | promad  | mgroad    |    6000 | 2022-11-19 |
+| 143   | madhuri | chadni    |    1900 | 2022-11-21 |
++-------+---------+-----------+---------+------------+
+5 rows in set (0.03 sec)
+
+
+mysql> select * from deposit where ammount>1000 order by cname;
++-------+---------+-----------+---------+------------+
+| actno | cname   | bname     | ammount | adate      |
++-------+---------+-----------+---------+------------+
+| 143   | madhuri | chadni    |    1900 | 2022-11-21 |
+| 143   | promad  | mgroad    |    6000 | 2022-11-19 |
+| 133   | rahul   | karolbagh |    3000 | 2022-11-01 |
+| 143   | sandip  | karolbagh |    1800 | 2022-11-13 |
+| 143   | sunil   | mgroad    |    2000 | 2022-10-11 |
++-------+---------+-----------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from borrow where cname like '__d%' or '__a%';
++--------+---------+--------+---------+
+| loanno | cname   | bname  | ammount |
++--------+---------+--------+---------+
+| 201    | madhuri | chadni |    3000 |
++--------+---------+--------+---------+
+1 row in set, 1 warning (0.00 sec)
