@@ -1,0 +1,26 @@
+Q2/- How many types of relationships exist among tables in the
+Database? Explain with some examples, and also mention how to
+establish these relationships among tables with examples.
+
+Ans:
+
+There are three types of relationship exist among table in the database.
+  
+  1.one to one;
+  2.one to many;
+  3.many to many;
+  
+  1.one to one:
+  
+  It is used to create a relationship between two tables in which a single row of first table can only be related
+  with only one record of second table.
+  
+  2.one to many:
+  It is used to create a relationship between two tables in which a single row of first table can only be related
+  with one or more than one record of second table but rows of second table only relate to a single row of first
+  table.
+  
+  3.many to many;
+  It is used to create a relationship between two tables in which a single row of first table can only be related
+  with one or more than one record of second table and rows of second table also relate to a multiple row of first
+  table.
