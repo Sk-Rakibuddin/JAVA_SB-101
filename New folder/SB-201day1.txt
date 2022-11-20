@@ -1,0 +1,31 @@
+Q1/ Explain the Build process of the Java Application, How the Maven helps in the
+application build?
+
+ANS: Maven is a tool that can be used for building and managing any Java based project, it generally makes the day to day work of the Java developers easier and help with the comprehension
+of Project.It makes the build process easier,provides uniform build system, provides quality project information and encourages better development practice.
+
+
+Q2/- What is the POM, Explain the basic properties of the pom.xml file in Maven based
+application.
+
+ANS: POM is the acronym of Project Object Model.  pom.xml file contains the project information and configuration information for the maven to build the project such as dependencies, build directory,source directory, test source directory etc. Maven reads the pom.xml file then executes the goal.It contains project,modelVersion,groupId,artifactId,version,dependency,
+url,name etc tags.
+
+
+
+Q3/- What are the different phases of the Maven life cycle?
+
+ANS: Maven has three life cycles:
+               
+         1.Default life cycle:It is one of the most important Lifecycles of maven. In this lifecycle, Maven builds, tests and distributes.
+         
+         2.Clean lifecycle:It is one of the most important Lifecycles of maven. In this lifecycle, Maven builds, tests and distributes.
+
+         3.Site lifecycle:Mainly the site lifecycle handles the creation of project site documentation.
+
+          ***    
+          Maven Site Lifecycle phases are.
+          Pre-site
+          Site
+          Post-site
+          Site-deploy
