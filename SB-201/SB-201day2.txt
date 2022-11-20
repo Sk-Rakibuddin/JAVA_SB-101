@@ -1,0 +1,66 @@
+limitation of JDBC based persistence logic:
+
+1. Jdbc can't store the Java objects into the table directly, because the SQL queries does not allows the Java objects as input,
+here we need to convert object data into the simple value to store them in a database.
+
+2. Jdbc code is the database dependent code because it uses database s/w dependent queries. so the JDBC based
+persistence logic is not 100% portable across various database s/w.
+
+3. Jdbc code having boiler plate code problem (writing the same code except the SQL queries in multiple classes of our
+application again and again).
+
+4. Jdbc code throws lots of checked exceptions, programmer need to handle them at compile time itself.
+
+5. After the select operation, we get the ResultSet object. this ResutSet object we can not transfer from one layer to another
+layer and to get the data from the ResultSet object we need to know the structure of the ResultSet object also.
+
+6. There is no any caching and transaction management support is available in the JDBC.
+
+
+
+
+Q2/- Differentiate between Hibernate and JPA.
+
+ANS:Each ORM software has their own API to perform ORM based persistence logic.
+
+(JPA)Java Persistence API: It is a standard API using which we can work with any kind of ORM software.
+All the ORM s/w implements the JPA API.
+
+Hibernate API belongs to the “org.hibernate” package.
+JPA API comes in the form of "javax.persistence" package.
+
+JPA is a specification and Hibernate is its one of the famous implementation.
+
+Hibernate:- it is one of the ORM based framework software. other software are : Toplink, Ibatis, etc.
+JPA:- (Java persistence API) :- It is an open specification given by Oracle corp, to develop any ORM based s/w .
+JPA provides a standard API to work with any kind of ORM based s/w .
+Hibernate is one of the most frequently used JPA implementation
+-HB provides its own API to develop ORM based persistence logic, if we use those API then
+our application will become vendor lock, i.e we can not port our application across multiple
+ORM s/w.
+
+
+
+Q3/- What is the Difference between the Java Bean class and the POJO class.
+
+
+             POJO                                                                                       Java Bean
+
+It doesn’t have special restrictions other than those forced by Java language.	It  has some restrictions.
+It doesn’t provide much control on members.	                                    It provides complete control on members.
+It can implement Serializable interface.	                                          It should implement serializable interface.
+Fields can be accessed by their names.	                                          Fields are accessed only by getters and setters.
+Fields can have any visibility.	                                                Fields have only private visibility.
+There may/may-not be a no-arg constructor.	                                    It must have a no-arg constructor.
+It is used when you don’t want to give restriction on your members and give user    It is used when you want to provide user your entity but only some part of your entity.
+complete access of your entity
+
+
+
+Q4/-Explain about the ORM, what are the benefits of the ORM approach over the
+JDBC approach.
+
+ANS:The process of mapping the Java classes with the database tables, Java class member variables with the database table
+columns and making the object of the Java class represents the DB table records having synchronization between them is
+called a OR mapping.
+	                                               
