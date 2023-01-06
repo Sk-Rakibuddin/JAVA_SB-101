@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="tourist" class="com.masai.Tourist">
+
+        <constructor-arg name="age" value="25"></constructor-arg>
+        <constructor-arg name="name" value="Rakib"></constructor-arg>
+        <constructor-arg name="aadhar_id" value="32489"></constructor-arg>
+
+
+    </bean>
+
+
+    <bean id="holidaypackage" class="com.masai.HolidayPackage" autowire="byType">
+
+
+
+    </bean>
+
+
+
+</beans>
