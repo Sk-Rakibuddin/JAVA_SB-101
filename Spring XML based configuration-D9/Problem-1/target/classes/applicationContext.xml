@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        
+    <bean id="dateFormater" class="java.text.SimpleDateFormat">
+        <constructor-arg value="dd-MM-yyyy" />
+    </bean>
+	
+	<bean id = "tr" class="com.masai.Tourist">
+		<constructor-arg value="Siddharth"/>
+		<constructor-arg value="27"/>
+		<constructor-arg value="8484"/>
+	</bean>
+	
+	<bean id = "hp" class="com.masai.HolidayPackage">
+		<property name="package_name">
+			<value>Way to Hawai</value>
+		</property>
+		
+		<property name="tourist" ref="tr"/>
+		
+		<property name="package_expiry">
+			<bean factory-bean="dateFormater" factory-method="parse">
+                <constructor-arg value="23-01-2025" />
+            </bean>
+		</property>
+		
+		<property name="package_price">
+			<value>100000</value>
+		</property>
+	</bean>
+    
+ 
+</beans>

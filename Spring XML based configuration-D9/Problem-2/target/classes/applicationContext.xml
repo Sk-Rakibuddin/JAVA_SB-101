@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+     	<bean id="dpt1" class="com.masai.Department">
+        	<constructor-arg name="deptId" value="1"/>
+        	<constructor-arg name="deptName" value="Sales"/>
+        	<constructor-arg name="location" value="Delhi"/>
+
+        </bean>
+        
+           <bean id="dpt2" class="com.masai.Department">
+        	<constructor-arg name="deptId" value="2"/>
+      		<constructor-arg name="deptName" value="Marketing"/>
+        	<constructor-arg name="location" value="Agra"/>
+        	
+     	</bean>
+        
+        <bean id="dpt3" class="com.masai.Department">
+        	<constructor-arg name="deptId" value="3"/>
+			<constructor-arg name="deptName" value="Accounts"/>
+			<constructor-arg name="location" value="Mumbai"/>
+		</bean>
+ 
+          <bean id="emp1" class="com.masai.Employee">
+        	<constructor-arg name="empId" value="1"/>
+  			<constructor-arg name="empName" value="Siddharth"/>
+   			<constructor-arg name="address" value="Pithoragarh"/>
+     		<constructor-arg name="salary" value="10000000"/>
+ 			
+        </bean>
+        
+        <bean id="emp2" class="com.masai.Employee">
+        	<constructor-arg name="empId" value="1"/>
+ 			<constructor-arg name="empName" value="Rahul"/>
+ 			<constructor-arg name="address" value="Jaikot"/>
+ 			<constructor-arg name="salary" value="15000000"/>
+		</bean>
+        
+         <bean id="emp3" class="com.masai.Employee">
+        	<constructor-arg name="empId" value="3"/>
+			<constructor-arg name="empName" value="Deepak"/>
+			<constructor-arg name="address" value="Linthura"/>
+			<constructor-arg name="salary" value="16000000"/>
+		</bean>
+        
+        <bean id="demo" class="com.masai.Demo" scope="prototype" init-method="myInit" destroy-method="cleanUp" lazy-init="true">
+        	<property name="theMap">
+        		<map>
+        			<entry>
+        				<key>
+        					<ref bean="dpt1"/>
+        				</key>
+        					<ref bean="emp1"/>
+        			</entry>
+        			
+        			<entry>
+        				<key>
+        					<ref bean="dpt2"/>
+        				</key>
+        					<ref bean="emp2"/>
+        			</entry>
+        			
+        			<entry>
+        				<key>
+        					<ref bean="dpt3"/>
+        				</key>
+        					<ref bean="emp3"/>
+        			</entry>
+        		</map>
+        	</property>
+        </bean>
+    
+</beans>
